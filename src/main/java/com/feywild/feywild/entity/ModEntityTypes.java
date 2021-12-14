@@ -1,6 +1,7 @@
 package com.feywild.feywild.entity;
 
 import com.feywild.feywild.FeywildMod;
+import com.feywild.feywild.entity.boat.FeyBoat;
 import io.github.noeppi_noeppi.libx.annotation.registration.RegisterClass;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -12,7 +13,7 @@ public class ModEntityTypes {
             .sized(0.7f, 1)
             .build(FeywildMod.getInstance().modid + "_bee_knight");
 
-    public static final EntityType<Mandragora> mandragora =  EntityType.Builder.of(Mandragora::new, MobCategory.CREATURE)
+    public static final EntityType<Mandragora> mandragora = EntityType.Builder.of(Mandragora::new, MobCategory.CREATURE)
             .sized(0.7f, 1)
             .build(FeywildMod.getInstance().modid + "_mandragora");
 
@@ -59,4 +60,10 @@ public class ModEntityTypes {
     public static final EntityType<WinterPixie> winterPixie = EntityType.Builder.of(WinterPixie::new, MobCategory.CREATURE)
             .sized(0.7f, 1)
             .build(FeywildMod.getInstance().modid + "_winter_pixie");
+
+    /*BOATS*/
+
+    public static final EntityType<FeyBoat> autumnBoat = EntityType.Builder.<FeyBoat>of(FeyBoat::new, MobCategory.MISC)
+            .sized(1, 1)
+            .build(FeywildMod.getInstance().modid + "_autumn_boat");
 }

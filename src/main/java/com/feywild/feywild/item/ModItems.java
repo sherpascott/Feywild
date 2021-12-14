@@ -3,7 +3,6 @@ package com.feywild.feywild.item;
 import com.feywild.feywild.FeywildMod;
 import com.feywild.feywild.config.MiscConfig;
 import com.feywild.feywild.entity.*;
-import com.feywild.feywild.entity.Mandragora;
 import com.feywild.feywild.sound.ModSoundEvents;
 import io.github.noeppi_noeppi.libx.annotation.registration.RegisterClass;
 import io.github.noeppi_noeppi.libx.base.ItemBase;
@@ -59,6 +58,10 @@ public class ModItems {
                     .saturationMod(2.0f)
                     .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 900, 0), 1)
                     .build()), new TranslatableComponent("message.feywild.magical_honey_cookie"));
+
+    /* BOATS */
+
+    public static final Item autumnBoat = new FeyBoatItem(new Item.Properties().tab(FeywildMod.getInstance().tab), "autumn");
     
     /* QUEST ITEMS
 
