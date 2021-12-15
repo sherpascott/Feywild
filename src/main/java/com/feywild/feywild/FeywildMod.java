@@ -8,6 +8,7 @@ import com.feywild.feywild.config.mapper.BiomeTypeMapper;
 import com.feywild.feywild.config.validator.StructureDataValidator;
 import com.feywild.feywild.entity.*;
 import com.feywild.feywild.entity.base.Fey;
+import com.feywild.feywild.entity.boat.FeyBoat;
 import com.feywild.feywild.entity.model.*;
 import com.feywild.feywild.entity.render.*;
 import com.feywild.feywild.network.FeywildNetwork;
@@ -31,6 +32,7 @@ import com.google.common.collect.ImmutableMap;
 import io.github.noeppi_noeppi.libx.config.ConfigManager;
 import io.github.noeppi_noeppi.libx.mod.registration.ModXRegistration;
 import io.github.noeppi_noeppi.libx.mod.registration.RegistrationBuilder;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
@@ -42,6 +44,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -121,6 +124,19 @@ public final class FeywildMod extends ModXRegistration {
     @Nonnull
     public static FeywildNetwork getNetwork() {
         return network;
+    }
+
+    @SubscribeEvent
+    public static void registerLayerDefinition(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(new ModelLayerLocation(new ResourceLocation(FeywildMod.getInstance().modid, "boat"), "boat"), FeyBoatModel::createBodyModel);
+    }
+
+    public static ModelLayerLocation createBoatModelName(FeyBoat.Type type) {
+        return createLocation("boat/" + type.getName(), "main");
+    }
+
+    private static ModelLayerLocation createLocation(String p_171301_, String p_171302_) {
+        return new ModelLayerLocation(new ResourceLocation("minecraft", p_171301_), p_171302_);
     }
 
     @Override
