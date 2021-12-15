@@ -8,7 +8,7 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.BoatItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
@@ -20,14 +20,14 @@ import net.minecraft.world.phys.Vec3;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class FeyBoatItem extends Item {
+public class FeyBoatItem extends BoatItem {
 
     private static final Predicate<Entity> ENTITY_PREDICATE = EntitySelector.NO_SPECTATORS.and(Entity::isPickable);
-    private final FeyBoat.Type type;
+    private final String woodType;
 
-    public FeyBoatItem(FeyBoat.Type type, Properties properties) {
-        super(properties);
-        this.type = type;
+    public FeyBoatItem(Properties properties, String woodType) {
+        super(null, properties);
+        this.woodType = woodType;
     }
 
     @Override
@@ -53,7 +53,7 @@ public class FeyBoatItem extends Item {
 
             if (hitresult.getType() == HitResult.Type.BLOCK) {
                 FeyBoat boat = new FeyBoat(level, hitresult.getLocation().x, hitresult.getLocation().y, hitresult.getLocation().z);
-                boat.setType(this.type);
+                boat.setWoodType(woodType);
                 boat.setYRot(player.getYRot());
                 if (!level.noCollision(boat, boat.getBoundingBox().inflate(-0.1D))) {
                     return InteractionResultHolder.fail(itemstack);

@@ -3,7 +3,6 @@ package com.feywild.feywild.item;
 import com.feywild.feywild.FeywildMod;
 import com.feywild.feywild.config.MiscConfig;
 import com.feywild.feywild.entity.*;
-import com.feywild.feywild.entity.boat.FeyBoat;
 import com.feywild.feywild.sound.ModSoundEvents;
 import io.github.noeppi_noeppi.libx.annotation.registration.RegisterClass;
 import io.github.noeppi_noeppi.libx.base.ItemBase;
@@ -62,7 +61,7 @@ public class ModItems {
 
     /* BOATS */
 
-    public static final Item autumnBoat = new FeyBoatItem(FeyBoat.Type.AUTUMN, new Item.Properties().tab(FeywildMod.getInstance().tab));
+    public static final Item autumnBoat = new FeyBoatItem(new Item.Properties().tab(FeywildMod.getInstance().tab), "autumn");
     
     /* QUEST ITEMS
 
