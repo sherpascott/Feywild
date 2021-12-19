@@ -36,8 +36,7 @@ public class FeyBoatModel<T extends FeyBoat> extends EntityModel<T> {
         this.right = root.getChild("right");
         this.back = root.getChild("back");
         this.bottom = root.getChild("bottom");
-        this.parts = ImmutableList.of(bottom.getChild("bottom"), back.getChild("back"), front.getChild("front"),
-                paddle_right.getChild("right"), paddle_left.getChild("left"), this.paddle_left, this.paddle_right);
+        this.parts = ImmutableList.of(bottom, back, front, paddle_right, paddle_left);
     }
 
     public static LayerDefinition createBodyLayer() {

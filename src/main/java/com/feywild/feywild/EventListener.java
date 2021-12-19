@@ -49,7 +49,8 @@ import java.util.List;
 public class EventListener {
 
     @SubscribeEvent
-    public static void registerLayerDefinition(EntityRenderersEvent.RegisterLayerDefinitions event) {
+    @OnlyIn(Dist.CLIENT)
+    public void registerLayerDefinition(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(FeyBoatModel.LAYER_LOCATION, FeyBoatModel::createBodyLayer);
     }
 
