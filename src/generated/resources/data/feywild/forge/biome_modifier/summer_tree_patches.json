@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
-  "biomes": "#forge:is_hot/overworld",
+  "biomes": "byg:forgotten_forest",
   "features": "feywild:summer_tree_patches",
   "step": "vegetal_decoration"
 }
